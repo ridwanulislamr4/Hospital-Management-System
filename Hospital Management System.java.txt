@@ -1,0 +1,100 @@
+import java.util.*;
+
+abstract class Person {
+    private String name;
+    private int age;
+    private String gender;
+
+    public Person(String name, int age, String gender) {
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public abstract void displayInfo();
+}
+
+class Doctor extends Person {
+    private String specialty;
+
+    public Doctor(String name, int age, String gender, String specialty) {
+        super(name, age, gender);
+        this.specialty = specialty;
+    }
+
+    public String getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Doctor Name: " + getName());
+        System.out.println("Age: " + getAge());
+        System.out.println("Gender: " + getGender());
+        System.out.println("Specialty: " + specialty);
+    }
+}
+
+class Patient extends Person {
+    private String ailment;
+
+    public Patient(String name, int age, String gender, String ailment) {
+        super(name, age, gender);
+        this.ailment = ailment;
+    }
+
+    public String getAilment() {
+        return ailment;
+    }
+
+    public void setAilment(String ailment) {
+        this.ailment = ailment;
+    }
+
+    @Override
+    public void displayInfo() {
+        System.out.println("Patient Name: " + getName());
+        System.out.println("Age: " + getAge());
+        System.out.println("Gender: " + getGender());
+        System.out.println("Ailment: " + ailment);
+    }
+}
+
+public class HospitalManagementSystem {
+    public static void main(String[] args) {
+        Doctor doctor = new Doctor("Dr. Smith", 45, "Male", "Cardiology");
+        Patient patient = new Patient("John Doe", 30, "Male", "Flu");
+
+        doctor.displayInfo();
+        System.out.println();
+        patient.displayInfo();
+    }
+}
